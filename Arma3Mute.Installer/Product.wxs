@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="Arma3Mute.Installer" Language="1033" Version="1.0.0.0" Manufacturer="SresgaminG" UpgradeCode="7b08f0cf-503e-46c7-8d96-a5ab635b96ed">
+    
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perUser" />
+    <MajorUpgrade DowngradeErrorMessage="A newer version of Arma3Mute is already installed." />
+
+    <Media Id='1' Cabinet='Arma3Mute.cab' EmbedCab='yes' CompressionLevel='high'/>
+
+		<Feature Id="AllFeatures" Title="Arma3Mute" Description="Arma 3 Mute Installer" Display="expand" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+      <ComponentRef Id='SresgaminGMenuDir' />
+		</Feature>
+
+    <!-- Setup Icon in the Add/Remove programs  -->
+    <Property Id='ARPPRODUCTICON'>Arma3Mute.exe.ico</Property>
+    <Icon Id="Arma3Mute.exe.ico" SourceFile="$(var.ArmaMute.TargetPath)" />
+    
+	</Product>
+
+	<Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      
+      <Directory Id="LocalAppDataFolder">
+        <Directory Id="SresgaminGFolder" Name="SresgaminG">
+          <Directory Id="INSTALLFOLDER" Name="Arma3Mute"/>
+        </Directory>
+      </Directory>
+
+      <Directory Id="ProgramMenuFolder" Name="Programs">
+        <Directory Id="SresgaminGMenuDir" Name="SresgaminG">
+          <Component Id="SresgaminGMenuDir" Guid="{5E90D495-C14A-4191-935A-4891C31E68AE}">
+            <RemoveFolder Id="SresgaminGMenuDir" On="uninstall" />
+            <RegistryValue Root='HKCU' Key='Software\[Manufacturer]\[ProductName]' Type='string' Value='' KeyPath='yes' />
+          </Component>
+        </Directory>
+      </Directory>
+
+      <Directory Id="DesktopFolder" Name="Desktop"/>
+      
+    </Directory>
+    
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents">
+      <ComponentGroupRef Id="SresgaminGFiles"/>
+      
+      <Component Id="PslFolderCompId" Guid ="{5E90D495-C14A-4191-935A-FF91A31E68AE}" Directory="SresgaminGFolder">
+        <RemoveFolder Id="SresgaminGFolder" On="uninstall"/>
+      </Component>
+		</ComponentGroup>
+	</Fragment>
+</Wix>

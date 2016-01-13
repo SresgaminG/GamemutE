@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+    <ComponentGroup Id="SresgaminGFiles">
+      
+      <Component Id="Arma3MuteMainProgram" Guid="{808A3718-F67E-4854-93E4-DEE5543C12AA}" Directory="INSTALLFOLDER">
+
+        <RemoveFolder Id="Arma3MuteMainProgram" On="uninstall" Directory="INSTALLFOLDER"/>
+
+        <File Id="SresgaminG.Arma3Mute" Name="Arma3Mute.exe" DiskId="1" Source="$(var.ArmaMute.TargetPath)" KeyPath="yes"/>
+        
+        <File Id="SresgaminG.Arma3" Name="SresgaminG.Arma3.dll" DiskId="1" Source="$(var.SolutionDir)ArmaMute\bin\Debug\SresgaminG.Arma3.dll"/>
+        <File Id="Gma.System.MouseKeyHook" Name="Gma.System.MouseKeyHook.dll" DiskId="1" Source="$(var.SolutionDir)ArmaMute\bin\Debug\Gma.System.MouseKeyHook.dll"/>
+        <File Id="CoreAudio" Name="CoreAudio.dll" DiskId="1" Source="$(var.SolutionDir)ArmaMute\bin\Debug\CoreAudio.dll"/>
+
+        <Shortcut Id="startMenuArma3MuteShortcut" Directory="SresgaminGMenuDir" Icon ="Arma3Mute.exe.ico" Name="Arma3Mute" WorkingDirectory="INSTALLFOLDER" IconIndex="0" Advertise="yes" />
+        <Shortcut Id="desktopArma3MuteShortcut" Directory="DesktopFolder" Name="Arma3Mute" WorkingDirectory="INSTALLFOLDER" Icon="Arma3Mute.exe.ico" IconIndex="0" Advertise="yes" />
+      </Component>
+      
+    </ComponentGroup>
+	</Fragment>
+</Wix>
