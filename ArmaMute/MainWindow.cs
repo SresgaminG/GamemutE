@@ -41,7 +41,7 @@ namespace SresgaminG.Arma3
             Thread.Sleep(100);
 
             if (e.KeyCode == Keys.Multiply && ModifierKeys == Keys.Control)
-                Mute.MuteUnmute("chrome");
+                Mute.MuteUnmute("arma");
         }
 
         private void OnLoad(object sender, System.EventArgs e)

@@ -9,9 +9,8 @@
 
         <File Id="SresgaminG.Arma3Mute" Name="Arma3Mute.exe" DiskId="1" Source="$(var.ArmaMute.TargetPath)" KeyPath="yes"/>
         
-        <File Id="SresgaminG.Arma3" Name="SresgaminG.Arma3.dll" DiskId="1" Source="$(var.SolutionDir)ArmaMute\bin\Debug\SresgaminG.Arma3.dll"/>
-        <File Id="Gma.System.MouseKeyHook" Name="Gma.System.MouseKeyHook.dll" DiskId="1" Source="$(var.SolutionDir)ArmaMute\bin\Debug\Gma.System.MouseKeyHook.dll"/>
-        <File Id="CoreAudio" Name="CoreAudio.dll" DiskId="1" Source="$(var.SolutionDir)ArmaMute\bin\Debug\CoreAudio.dll"/>
+        <File Id="Gma.System.MouseKeyHook" Name="Gma.System.MouseKeyHook.dll" DiskId="1" Source="$(var.SolutionDir)ArmaMute\dlls\Gma.System.MouseKeyHook.dll"/>
+        <File Id="CoreAudio" Name="CoreAudio.dll" DiskId="1" Source="$(var.SolutionDir)ArmaMute\dlls\CoreAudio.dll"/>
 
         <Shortcut Id="startMenuArma3MuteShortcut" Directory="SresgaminGMenuDir" Icon ="Arma3Mute.exe.ico" Name="Arma3Mute" WorkingDirectory="INSTALLFOLDER" IconIndex="0" Advertise="yes" />
         <Shortcut Id="desktopArma3MuteShortcut" Directory="DesktopFolder" Name="Arma3Mute" WorkingDirectory="INSTALLFOLDER" Icon="Arma3Mute.exe.ico" IconIndex="0" Advertise="yes" />
