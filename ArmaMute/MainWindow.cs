@@ -46,15 +46,17 @@ namespace SresgaminG.Arma3
 
         private void OnLoad(object sender, System.EventArgs e)
         {
+            this.Text = string.Format("{0} - v{1}", this.Text, Application.ProductVersion);
             SetupGlobalKeys();
 
             this.WindowState = FormWindowState.Minimized;
+            this.Visible = this.ShowInTaskbar = false;
             this.notifyIcon.ShowBalloonTip(2, "ARMA 3 Mute", "Use [CTRL + *] to mute ARMA 3", ToolTipIcon.Info);
         }
 
         private void OnResize(object sender, System.EventArgs e)
         {
-            ShowInTaskbar = (this.WindowState != FormWindowState.Minimized);
+            Visible = ShowInTaskbar = (this.WindowState != FormWindowState.Minimized);
         }
 
         private void OnNotifyDoubleClick(object sender, MouseEventArgs e)
