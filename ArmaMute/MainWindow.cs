@@ -9,6 +9,8 @@ namespace SresgaminG.Arma3
         public MainWindow()
         {
             InitializeComponent();
+
+            LogHelper.Debug(this, "Starting ArmaMute");
         }
 
         private IKeyboardMouseEvents m_GlobalHook;
@@ -21,27 +23,41 @@ namespace SresgaminG.Arma3
 
         public void Subscribe()
         {
+            LogHelper.Debug(this, "Subscribing to the global hook");
+
             // Note: for the application hook, use the Hook.AppEvents() instead
             m_GlobalHook = Hook.GlobalEvents();
             m_GlobalHook.KeyUp += GlobalHookKeyUp;
+
+            LogHelper.Debug(this, "Subscribed to the global hook");
         }
 
         public void Unsubscribe()
         {
             if (m_GlobalHook == null) return;
 
+            LogHelper.Debug(this, "Unsubscribing the global hook");
+
             m_GlobalHook.KeyUp -= GlobalHookKeyUp;
 
             //It is recommended to dispose
             m_GlobalHook.Dispose();
+
+            LogHelper.Debug(this, "Global hook unsubscribed");
         }
 
         private void GlobalHookKeyUp(object sender, KeyEventArgs e)
         {
+            LogHelper.Debug(this, "Global hook key up event");
+
             Thread.Sleep(100);
 
             if (e.KeyCode == Keys.Multiply && ModifierKeys == Keys.Control)
-                Mute.MuteUnmute("arma");
+            {
+                LogHelper.Debug(this, "Correct key combo pressed");
+
+                Mute.MuteUnmute("chrome");
+            }
         }
 
         private void OnLoad(object sender, System.EventArgs e)

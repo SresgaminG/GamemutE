@@ -11,12 +11,17 @@ namespace SresgaminG.Arma3
 
         public static void MuteUnmute(string appName)
         {
+            LogHelper.Debug(null, "Starting mute functionality");
+
             devicesAndSessions.Clear();
 
             FindApplication(appName);
 
             foreach (KeyValuePair<int, int> ds in devicesAndSessions)
+            {
+                LogHelper.Info(null, "Muting application {0}, {1}", ds.Key, ds.Value);
                 devCol[ds.Key].AudioSessionManager2.Sessions[ds.Value].SimpleAudioVolume.Mute = !devCol[ds.Key].AudioSessionManager2.Sessions[ds.Value].SimpleAudioVolume.Mute;
+            }
         }
 
         public static void VolumeUp(string appName)
@@ -73,6 +78,8 @@ namespace SresgaminG.Arma3
 
         private static void FindApplication(string appName)
         {
+            LogHelper.Debug(null, "Finding any mixers that contain the word '{0}'", appName);
+
             EDataFlow flow = new EDataFlow();
             MMDeviceEnumerator deviceEnum = new MMDeviceEnumerator();
 
@@ -83,7 +90,11 @@ namespace SresgaminG.Arma3
                 for (int sesIdx = 0; sesIdx < devCol[devIdx].AudioSessionManager2.Sessions.Count; sesIdx++)
                 {
                     if (devCol[devIdx].AudioSessionManager2.Sessions[sesIdx].GetSessionIdentifier.Contains(appName))
+                    {
+                        LogHelper.Debug(null, "Found {0}", devCol[devIdx].AudioSessionManager2.Sessions[sesIdx].GetSessionIdentifier);
+
                         devicesAndSessions.Add(new KeyValuePair<int, int>(devIdx, sesIdx));
+                    }
                 }
             }
         }
