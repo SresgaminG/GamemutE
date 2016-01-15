@@ -8,7 +8,7 @@
         <RemoveFolder Id="Arma3MuteMainProgram" On="uninstall" Directory="INSTALLFOLDER"/>
 
         <File Id="SresgaminG.Arma3Mute" Name="Arma3Mute.exe" DiskId="1" Source="$(var.ArmaMute.TargetPath)" KeyPath="yes"/>
-        <File Id="SresgaminG.Arma3Mute.config" Name ="SresgaminG.Arma3Mute.exe.config"  DiskId="1" Source="$(var.ArmaMute.TargetPath).config"/>
+        <File Id="SresgaminG.Arma3Mute.config" Name ="Arma3Mute.exe.config"  DiskId="1" Source="$(var.ArmaMute.TargetPath).config"/>
         
         <File Id="Gma.System.MouseKeyHook" Name="Gma.System.MouseKeyHook.dll" DiskId="1" Source="$(var.SolutionDir)ArmaMute\dlls\Gma.System.MouseKeyHook.dll"/>
         <File Id="CoreAudio" Name="CoreAudio.dll" DiskId="1" Source="$(var.SolutionDir)ArmaMute\dlls\CoreAudio.dll"/>

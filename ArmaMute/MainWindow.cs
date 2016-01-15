@@ -56,7 +56,7 @@ namespace SresgaminG.Arma3
             {
                 LogHelper.Debug(this, "Correct key combo pressed");
 
-                Mute.MuteUnmute("chrome");
+                Mute.MuteUnmute("arma");
             }
         }
 
