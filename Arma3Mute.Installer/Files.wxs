@@ -3,19 +3,19 @@
 	<Fragment>
     <ComponentGroup Id="SresgaminGFiles">
       
-      <Component Id="Arma3MuteMainProgram" Guid="{808A3718-F67E-4854-93E4-DEE5543C12AA}" Directory="INSTALLFOLDER">
+      <Component Id="ArmamutEMainProgram" Guid="{808A3718-F67E-4854-93E4-DEE5543C12AA}" Directory="INSTALLFOLDER">
 
-        <RemoveFolder Id="Arma3MuteMainProgram" On="uninstall" Directory="INSTALLFOLDER"/>
+        <RemoveFolder Id="ArmamutEMainProgram" On="uninstall" Directory="INSTALLFOLDER"/>
 
-        <File Id="SresgaminG.Arma3Mute" Name="Arma3Mute.exe" DiskId="1" Source="$(var.ArmaMute.TargetPath)" KeyPath="yes"/>
-        <File Id="SresgaminG.Arma3Mute.config" Name ="Arma3Mute.exe.config"  DiskId="1" Source="$(var.ArmaMute.TargetPath).config"/>
+        <File Id="SresgaminG.ArmamutE" Name="ArmamutE.exe" DiskId="1" Source="$(var.ArmamutE.TargetPath)" KeyPath="yes"/>
+        <File Id="SresgaminG.ArmamutE.config" Name ="ArmamutE.exe.config"  DiskId="1" Source="$(var.ArmamutE.TargetPath).config"/>
         
-        <File Id="Gma.System.MouseKeyHook" Name="Gma.System.MouseKeyHook.dll" DiskId="1" Source="$(var.SolutionDir)ArmaMute\dlls\Gma.System.MouseKeyHook.dll"/>
-        <File Id="CoreAudio" Name="CoreAudio.dll" DiskId="1" Source="$(var.SolutionDir)ArmaMute\dlls\CoreAudio.dll"/>
-        <File Id="NLog" Name="NLog.dll" DiskId="1" Source="$(var.SolutionDir)ArmaMute\dlls\NLog.dll"/>
+        <File Id="Gma.System.MouseKeyHook" Name="Gma.System.MouseKeyHook.dll" DiskId="1" Source="$(var.SolutionDir)ArmamutE\dlls\Gma.System.MouseKeyHook.dll"/>
+        <File Id="CoreAudio" Name="CoreAudio.dll" DiskId="1" Source="$(var.SolutionDir)ArmamutE\dlls\CoreAudio.dll"/>
+        <File Id="NLog" Name="NLog.dll" DiskId="1" Source="$(var.SolutionDir)ArmamutE\dlls\NLog.dll"/>
 
-        <Shortcut Id="startMenuArma3MuteShortcut" Directory="SresgaminGMenuDir" Icon ="Arma3Mute.exe.ico" Name="Arma3Mute" WorkingDirectory="INSTALLFOLDER" IconIndex="0" Advertise="yes" />
-        <Shortcut Id="desktopArma3MuteShortcut" Directory="DesktopFolder" Name="Arma3Mute" WorkingDirectory="INSTALLFOLDER" Icon="Arma3Mute.exe.ico" IconIndex="0" Advertise="yes" />
+        <Shortcut Id="startMenuArmamutEShortcut" Directory="SresgaminGMenuDir" Icon ="ArmamutE.exe.ico" Name="ArmamutE" WorkingDirectory="INSTALLFOLDER" IconIndex="0" Advertise="yes" />
+        <Shortcut Id="desktopArmamutEShortcut" Directory="DesktopFolder" Name="ArmamutE" WorkingDirectory="INSTALLFOLDER" Icon="ArmamutE.exe.ico" IconIndex="0" Advertise="yes" />
       </Component>
       
     </ComponentGroup>

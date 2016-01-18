@@ -6,7 +6,7 @@
     <ProductVersion>3.10</ProductVersion>
     <ProjectGuid>2fe873a0-34c7-4841-bd95-2a46d725def1</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>Arma3Mute</OutputName>
+    <OutputName>ArmamutE</OutputName>
     <OutputType>Package</OutputType>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
@@ -28,7 +28,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ArmaMute\ArmaMute.csproj">
-      <Name>ArmaMute</Name>
+      <Name>ArmamutE</Name>
       <Project>{62c8ac2c-2de6-4824-9c3c-51a888e79609}</Project>
       <Private>True</Private>
       <DoNotHarvest>True</DoNotHarvest>

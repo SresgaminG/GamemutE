@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace SresgaminG.Arma3
+namespace SresgaminG.Arma
 {
     public static class WindowApiHelper
     {

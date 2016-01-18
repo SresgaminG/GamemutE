@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using NLog;
 
-namespace SresgaminG.Arma3
+namespace SresgaminG.Arma
 {
     public static class LogHelper
     {
