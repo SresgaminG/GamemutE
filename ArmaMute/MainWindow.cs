@@ -74,7 +74,7 @@ namespace SresgaminG.Arma
 
             // Note: for the application hook, use the Hook.AppEvents() instead
             m_GlobalHook = Hook.GlobalEvents();
-            m_GlobalHook.KeyUp += GlobalHookKeyUp;
+            m_GlobalHook.KeyDown += GlobalHookKeyDown;
 
             LogHelper.Debug(this, "Subscribed to the global hook");
         }
@@ -85,7 +85,7 @@ namespace SresgaminG.Arma
 
             LogHelper.Debug(this, "Unsubscribing the global hook");
 
-            m_GlobalHook.KeyUp -= GlobalHookKeyUp;
+            m_GlobalHook.KeyDown -= GlobalHookKeyDown;
 
             //It is recommended to dispose
             m_GlobalHook.Dispose();
@@ -93,18 +93,16 @@ namespace SresgaminG.Arma
             LogHelper.Debug(this, "Global hook unsubscribed");
         }
 
-        private void GlobalHookKeyUp(object sender, KeyEventArgs e)
+        private void GlobalHookKeyDown(object sender, KeyEventArgs e)
         {
-            LogHelper.Debug(this, "Global hook key up event");
+            new Thread(CallMuteThread).Start(e);
+        }
 
-            Thread.Sleep(100);
-
+        private void CallMuteThread(object parameter)
+        {
+            KeyEventArgs e = (parameter as KeyEventArgs);
             if ((e.KeyCode | ModifierKeys) == Binding)
-            {
-                LogHelper.Debug(this, "Correct key combo pressed");
-
                 Mute.MuteUnmute("arma");
-            }
         }
 
         private void OnLoad(object sender, EventArgs e)
@@ -127,7 +125,10 @@ namespace SresgaminG.Arma
         private void OnNotifyDoubleClick(object sender, MouseEventArgs e)
         {
             if (this.WindowState == FormWindowState.Minimized)
+            {
                 this.WindowState = FormWindowState.Normal;
+                this.Visible = this.ShowInTaskbar = true;
+            }
 
             this.Activate();
         }
