@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="Arma - Mute" Language="1033" Version="1.3.0.0" Manufacturer="SresgaminG" UpgradeCode="7b08f0cf-503e-46c7-8d96-a5ab635b96ed">
+	<Product Id="*" Name="Arma - Mute" Language="1033" Version="1.4.0.0" Manufacturer="SresgaminG" UpgradeCode="7b08f0cf-503e-46c7-8d96-a5ab635b96ed">
     
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perUser" />
     <MajorUpgrade DowngradeErrorMessage="A newer version of ArmamutE is already installed." />
