@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Net;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using Gma.System.MouseKeyHook;
@@ -12,6 +14,7 @@ namespace SresgaminG.Arma
     public partial class MainWindow : Form
     {
         private Keys Binding = Keys.Control | Keys.Multiply;
+        private const string updateLink = "http://armamute.sresgaming.com/armamute_start_ping.php";
 
         public MainWindow()
         {
@@ -58,6 +61,29 @@ namespace SresgaminG.Arma
             }
 
             ShowBinding();
+
+            SendPingToSite();
+        }
+
+        private void SendPingToSite()
+        {
+            Task task = new Task(() =>
+              {
+                  try
+                  {
+                      HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(updateLink);
+
+                      using (HttpWebResponse webResponse = (HttpWebResponse)webRequest.GetResponse())
+                      {
+                          StreamReader reader = new StreamReader(webResponse.GetResponseStream());
+                          string reply = reader.ReadToEnd();
+                      }
+                  }
+                  catch (Exception ex)
+                  {
+                      LogHelper.HandledException(this, ex);
+                  }
+              });
         }
 
         private IKeyboardMouseEvents m_GlobalHook;
@@ -113,6 +139,7 @@ namespace SresgaminG.Arma
             this.WindowState = FormWindowState.Minimized;
             this.Visible = this.ShowInTaskbar = false;
             this.notifyIcon.ShowBalloonTip(2, string.Format("ArmamutE v{0}", Program.ApplicationVersion), string.Format("Use [{0}] to mute ARMA 3", GetBindingText(Binding.ToString())), ToolTipIcon.Info);
+            this.notifyIcon.Text = string.Format("ArmamutE v{0}", Program.ApplicationVersion);
 
             saveButton.Focus();
         }

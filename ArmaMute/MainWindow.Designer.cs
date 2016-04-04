@@ -52,7 +52,7 @@
             this.notifyIcon.BalloonTipTitle = "ArmamutE - By SresgaminG";
             this.notifyIcon.ContextMenuStrip = this.contextMenuStrip;
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
-            this.notifyIcon.Text = "Arma 3 Mute - By SresgaminG";
+            this.notifyIcon.Text = "ArmamutE - By SresgaminG";
             this.notifyIcon.Visible = true;
             this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.OnNotifyDoubleClick);
             // 

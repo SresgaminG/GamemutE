@@ -39,7 +39,7 @@
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <PropertyGroup>
-    <PostBuildEvent>c:\wintools\signtool.exe sign /f C:\Users\paul.talbot\Source\Repos\signing\brgcert.pfx /p brg /t http://timestamp.comodoca.com/authenticode C:\Users\paul.talbot\Source\Repos\Arma3mute\ArmamutE.Installer\bin\Release\ArmamutE.msi</PostBuildEvent>
+    <PostBuildEvent>c:\wintools\signtool.exe sign /f C:\Users\SresgaminG\Source\Repos\ArmamutE\ArmaMute\brgcert.pfx /p brg /t http://timestamp.comodoca.com/authenticode C:\Users\SresgaminG\Source\Repos\ArmamutE\ArmaMute\bin\Release\ArmaMute.exe</PostBuildEvent>
   </PropertyGroup>
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.
