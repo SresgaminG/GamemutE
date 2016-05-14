@@ -13,7 +13,9 @@ namespace SresgaminG.Arma
 {
     public partial class MainWindow : Form
     {
+        private IKeyboardMouseEvents m_GlobalHook;
         private Keys Binding = Keys.Control | Keys.Multiply;
+
         private const string updateLink = "http://armamute.sresgaming.com/armamute_start_ping.php";
 
         public MainWindow()
@@ -71,12 +73,16 @@ namespace SresgaminG.Arma
               {
                   try
                   {
+                      LogHelper.Debug(this, "Pinging website");
+
                       HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(updateLink);
 
                       using (HttpWebResponse webResponse = (HttpWebResponse)webRequest.GetResponse())
                       {
                           StreamReader reader = new StreamReader(webResponse.GetResponseStream());
                           string reply = reader.ReadToEnd();
+
+                          LogHelper.Debug(this, "Website replied: {0}", reply);
                       }
                   }
                   catch (Exception ex)
@@ -84,9 +90,9 @@ namespace SresgaminG.Arma
                       LogHelper.HandledException(this, ex);
                   }
               });
-        }
 
-        private IKeyboardMouseEvents m_GlobalHook;
+            task.Start();
+        }
 
         private void SetupGlobalKeys()
         {
