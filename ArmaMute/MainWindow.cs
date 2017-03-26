@@ -134,7 +134,10 @@ namespace SresgaminG.Arma
         {
             KeyEventArgs e = (parameter as KeyEventArgs);
             if ((e.KeyCode | ModifierKeys) == Binding)
+            {
                 Mute.MuteUnmute("arma");
+                Mute.MuteUnmute("TslGame");
+            }
         }
 
         private void OnLoad(object sender, EventArgs e)
