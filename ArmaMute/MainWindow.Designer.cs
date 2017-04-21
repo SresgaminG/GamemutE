@@ -1,4 +1,4 @@
-﻿namespace SresgaminG.Arma
+﻿namespace SresgaminG.GamemutE
 {
     partial class MainWindow
     {
@@ -37,22 +37,25 @@
             this.label2 = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel = new System.Windows.Forms.LinkLabel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.listGames = new DevExpress.XtraEditors.ListBoxControl();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.contextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listGames)).BeginInit();
             this.SuspendLayout();
             // 
             // notifyIcon
             // 
             this.notifyIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.notifyIcon.BalloonTipText = "Use CTRL + * (Asterisk) to mute or unmute Arma 3";
-            this.notifyIcon.BalloonTipTitle = "ArmamutE - By SresgaminG";
+            this.notifyIcon.BalloonTipText = "Use F1 to mute or unmute";
+            this.notifyIcon.BalloonTipTitle = "GamemutE - By SresgaminG";
             this.notifyIcon.ContextMenuStrip = this.contextMenuStrip;
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
-            this.notifyIcon.Text = "ArmamutE - By SresgaminG";
+            this.notifyIcon.Text = "GamemutE - By SresgaminG";
             this.notifyIcon.Visible = true;
             this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.OnNotifyDoubleClick);
             // 
@@ -72,9 +75,9 @@
             // 
             // muteSelect
             // 
-            this.muteSelect.Location = new System.Drawing.Point(71, 67);
+            this.muteSelect.Location = new System.Drawing.Point(75, 73);
             this.muteSelect.Name = "muteSelect";
-            this.muteSelect.Size = new System.Drawing.Size(143, 20);
+            this.muteSelect.Size = new System.Drawing.Size(139, 20);
             this.muteSelect.TabIndex = 1;
             this.muteSelect.Enter += new System.EventHandler(this.OnEnter);
             this.muteSelect.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
@@ -84,7 +87,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 70);
+            this.label2.Location = new System.Drawing.Point(14, 76);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 3;
@@ -92,7 +95,7 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(220, 66);
+            this.saveButton.Location = new System.Drawing.Point(220, 72);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 22);
             this.saveButton.TabIndex = 0;
@@ -104,28 +107,29 @@
             // 
             this.label3.Location = new System.Drawing.Point(10, 99);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(285, 55);
+            this.label3.Size = new System.Drawing.Size(283, 69);
             this.label3.TabIndex = 4;
-            this.label3.Text = "If you find this software useful, a thanks and a follow on my twitch channel woul" +
-    "d be appreciated. \r\n\r\nTell your friends!";
+            this.label3.Text = "If you find GamemutE useful, a hi and follow on my twitch stream would be appreci" +
+    "ated.\r\n\r\nIf you want a game added, tell me the name and process, if you\'re unsur" +
+    "e visit me in my twitch channel.";
             // 
-            // linkLabel1
+            // linkLabel
             // 
-            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(51, 166);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(167, 13);
-            this.linkLabel1.TabIndex = 5;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "http://www.twitch.tv/SresgaminG";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.OnLinkClicked);
+            this.linkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.linkLabel.AutoSize = true;
+            this.linkLabel.Location = new System.Drawing.Point(44, 317);
+            this.linkLabel.Name = "linkLabel";
+            this.linkLabel.Size = new System.Drawing.Size(69, 13);
+            this.linkLabel.TabIndex = 5;
+            this.linkLabel.TabStop = true;
+            this.linkLabel.Text = "/SresgaminG";
+            this.linkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.OnLinkClicked);
             // 
             // pictureBox3
             // 
             this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBox3.Image = global::SresgaminG.Arma.Properties.Resources.twitch;
-            this.pictureBox3.Location = new System.Drawing.Point(13, 161);
+            this.pictureBox3.Image = global::SresgaminG.GamemutE.Properties.Resources.twitch;
+            this.pictureBox3.Location = new System.Drawing.Point(13, 312);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(32, 25);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -134,23 +138,46 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::SresgaminG.Arma.Properties.Resources.ArmamutE;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Image = global::SresgaminG.GamemutE.Properties.Resources.GamemutE;
+            this.pictureBox2.Location = new System.Drawing.Point(12, 9);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(222, 58);
+            this.pictureBox2.Size = new System.Drawing.Size(283, 58);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
+            // 
+            // listGames
+            // 
+            this.listGames.Cursor = System.Windows.Forms.Cursors.Default;
+            this.listGames.Location = new System.Drawing.Point(12, 171);
+            this.listGames.MultiColumn = true;
+            this.listGames.Name = "listGames";
+            this.listGames.Size = new System.Drawing.Size(283, 135);
+            this.listGames.TabIndex = 9;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(250, 317);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(45, 13);
+            this.linkLabel1.TabIndex = 5;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Donate!";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.OnDonateClicked);
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(311, 196);
+            this.ClientSize = new System.Drawing.Size(305, 347);
+            this.Controls.Add(this.listGames);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.linkLabel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.label2);
@@ -161,12 +188,13 @@
             this.MaximizeBox = false;
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ArmamutE";
+            this.Text = "GamemutE";
             this.Load += new System.EventHandler(this.OnLoad);
             this.Resize += new System.EventHandler(this.OnResize);
             this.contextMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listGames)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,9 +209,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel linkLabel;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private DevExpress.XtraEditors.ListBoxControl listGames;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 

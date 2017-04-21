@@ -1,14 +1,28 @@
 ﻿using System.Collections.Generic;
 using CoreAudio;
-using SresgaminG.Arma;
+using SresgaminG.GamemutE.Helpers;
 
-namespace SresgaminG.Arma3
+namespace SresgaminG.GamemutE
 {
     public class Mute
     {
         private static MMDeviceCollection devCol;
 
         private static List<KeyValuePair<int, int>> devicesAndSessions = new List<KeyValuePair<int, int>>();
+
+        public static bool IsMuted(string appName)
+        {
+            LogHelper.Debug(null, "Checking if any of the games are muted");
+
+            devicesAndSessions.Clear();
+
+            FindApplication(appName);
+
+            foreach (KeyValuePair<int, int> ds in devicesAndSessions)
+                return devCol[ds.Key].AudioSessionManager2.Sessions[ds.Value].SimpleAudioVolume.Mute;
+
+            return false;
+        }
 
         public static void MuteUnmute(string appName)
         {
@@ -69,9 +83,7 @@ namespace SresgaminG.Arma3
             for (int devIdx = 0; devIdx < devCol.Count; devIdx++)
             {
                 for (int sesIdx = 0; sesIdx < devCol[devIdx].AudioSessionManager2.Sessions.Count; sesIdx++)
-                {
                     results.Add(devCol[devIdx].AudioSessionManager2.Sessions[sesIdx].GetSessionIdentifier);
-                }
             }
 
             return results;

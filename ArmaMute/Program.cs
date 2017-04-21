@@ -3,8 +3,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Windows.Forms;
+using SresgaminG.GamemutE.Helpers;
 
-namespace SresgaminG.Arma
+namespace SresgaminG.GamemutE
 {
     static class Program
     {
@@ -37,7 +38,8 @@ namespace SresgaminG.Arma
         {
             LogHelper.Info(null, "Checking for new version");
 
-            try {
+            try
+            {
                 WebClient client = new WebClient();
                 string webPage = client.DownloadString("https://github.com/SresgaminG/ArmamutE/releases");
 
@@ -48,16 +50,16 @@ namespace SresgaminG.Arma
 
                 if (Convert.ToDouble(ApplicationVersion) < Convert.ToDouble(latestVersionValue))
                 {
-                    LogHelper.Info(null, "There is a later version available (Version {0})", latestVersionValue);
+                    LogHelper.Info(null, $"There is a new version available (Version {latestVersionValue})");
 
-                    switch (MessageBox.Show(string.Format("There is a new version of ArmamutE available (Version {0}). Do you want to download it now?", latestVersionValue),
-                        string.Format("ArmamutE Version {0}", ApplicationVersion), MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1))
+                    switch (MessageBox.Show($"There is a new version of GamemutE available (Version {latestVersionValue}). Do you want to download it now?",
+                        $"GamemutE {ApplicationVersion}", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1))
                     {
                         case DialogResult.Yes:
 
                             LogHelper.Debug(null, "User selected download");
 
-                            Process.Start(string.Format("https://github.com/SresgaminG/ArmamutE/releases/download/{0}/ArmamutE.msi", latestVersionValue));
+                            Process.Start($"https://github.com/SresgaminG/ArmamutE/releases/download/{latestVersionValue}/GamemutE.msi");
 
                             return false;
                         case DialogResult.No:
@@ -65,7 +67,7 @@ namespace SresgaminG.Arma
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 LogHelper.HandledException(null, ex);
             }
@@ -84,9 +86,9 @@ namespace SresgaminG.Arma
                 string[] array = version.Split('.');
 
                 if (Convert.ToInt32(array[2]) > 0)
-                    return string.Format("{0}.{1}.{2}", array[0], array[1], array[2]);
+                    return $"{array[0]}.{array[1]}.{array[2]}";
 
-                return string.Format("{0}.{1}", array[0], array[1]);
+                return $"{array[0]}.{array[1]}";
             }
         }
     }

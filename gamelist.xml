@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Games>
+  <Game name="Arma 3" exe="arma"/>
+  <Game name="PU Battlegrounds" exe="TslGame"/>
+</Games>

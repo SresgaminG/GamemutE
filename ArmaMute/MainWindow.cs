@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
@@ -6,33 +7,73 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using System.Xml.Linq;
 using Gma.System.MouseKeyHook;
-using SresgaminG.Arma3;
+using SresgaminG.GamemutE.Entities;
+using SresgaminG.GamemutE.Helpers;
 
-namespace SresgaminG.Arma
+namespace SresgaminG.GamemutE
 {
     public partial class MainWindow : Form
     {
         private IKeyboardMouseEvents m_GlobalHook;
-        private Keys Binding = Keys.Control | Keys.Multiply;
+        private Keys Binding = Keys.F1;
+
 
         private const string updateLink = "http://armamute.sresgaming.com/armamute_start_ping.php";
+        private const string gameListXml = "http://armamute.sresgaming.com/gamelist.xml";
+
+        private string settingsXml = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}/SresgaminG/settings.xml";
+
+        private BindingList<Game> gameList = new BindingList<Game>();
 
         public MainWindow()
         {
             InitializeComponent();
 
-            LogHelper.Info(this, "Starting ArmamutE");
+            LogHelper.Info(this, "Starting GamemutE");
 
+            LoadXmlSettings();
+            LoadGameList();
+
+            ShowBinding();
+
+            SendPingToSite();
+        }
+
+        private void LoadGameList()
+        {
+            string xmlFile = string.Empty;
+            using (WebClient client = new WebClient())
+                xmlFile = client.DownloadString(gameListXml);
+
+            XDocument doc = XDocument.Parse(xmlFile);
+
+            var games = doc.Descendants("Game");
+
+            foreach (XElement game in games)
+            {
+                string gameName = game.Attribute(XName.Get("name")).Value;
+                string gameExe = game.Attribute(XName.Get("exe")).Value;
+
+                gameList.Add(new Game(gameName, gameExe));
+            }
+
+            listGames.DataSource = gameList;
+            listGames.DisplayMember = "Name";
+        }
+
+        private void LoadXmlSettings()
+        {
             LogHelper.Info(this, "Looking for settings file");
-            if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/SresgaminG/settings.xml"))
+            if (File.Exists(settingsXml))
             {
                 LogHelper.Info(this, "Settings file found");
 
                 try
                 {
                     XmlDocument xmlDoc = new XmlDocument();
-                    xmlDoc.Load(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/SresgaminG/settings.xml");
+                    xmlDoc.Load(settingsXml);
 
                     LogHelper.Info(this, "Looking for bind setting");
                     if (xmlDoc.SelectSingleNode("sresgaming/bind") != null)
@@ -52,7 +93,7 @@ namespace SresgaminG.Arma
                             Binding = Binding | key;
                         }
 
-                        LogHelper.Info(this, "Bind is good - {0}", GetBindingText(Binding.ToString()));
+                        LogHelper.Info(this, $"Bind is good - {GetBindingText(Binding.ToString())}");
                     }
                 }
                 catch
@@ -61,10 +102,6 @@ namespace SresgaminG.Arma
                     Binding = Keys.Control | Keys.Multiply;
                 }
             }
-
-            ShowBinding();
-
-            SendPingToSite();
         }
 
         private void SendPingToSite()
@@ -82,7 +119,7 @@ namespace SresgaminG.Arma
                           StreamReader reader = new StreamReader(webResponse.GetResponseStream());
                           string reply = reader.ReadToEnd();
 
-                          LogHelper.Debug(this, "Website replied: {0}", reply);
+                          LogHelper.Debug(this, $"Website replied: {reply}");
                       }
                   }
                   catch (Exception ex)
@@ -135,20 +172,26 @@ namespace SresgaminG.Arma
             KeyEventArgs e = (parameter as KeyEventArgs);
             if ((e.KeyCode | ModifierKeys) == Binding)
             {
-                Mute.MuteUnmute("arma");
-                Mute.MuteUnmute("TslGame");
+                foreach (Game game in gameList)
+                    Mute.MuteUnmute(game.ExeName);
             }
         }
 
         private void OnLoad(object sender, EventArgs e)
         {
-            this.Text = string.Format("{0} - v{1}", this.Text, Program.ApplicationVersion);
+            this.Text = $"{this.Text} {Program.ApplicationVersion}";
             SetupGlobalKeys();
+
+            foreach (Game game in gameList)
+            {
+                if (Mute.IsMuted(game.ExeName))
+                    Mute.MuteUnmute(game.ExeName);
+            }
 
             this.WindowState = FormWindowState.Minimized;
             this.Visible = this.ShowInTaskbar = false;
-            this.notifyIcon.ShowBalloonTip(2, string.Format("ArmamutE v{0}", Program.ApplicationVersion), string.Format("Use [{0}] to mute ARMA 3", GetBindingText(Binding.ToString())), ToolTipIcon.Info);
-            this.notifyIcon.Text = string.Format("ArmamutE v{0}", Program.ApplicationVersion);
+            this.notifyIcon.ShowBalloonTip(2, $"GamemutE {Program.ApplicationVersion}", $"Use [{GetBindingText(Binding.ToString())}] to mute a game", ToolTipIcon.Info);
+            this.notifyIcon.Text = $"GamemutE {Program.ApplicationVersion}";
 
             saveButton.Focus();
         }
@@ -225,6 +268,11 @@ namespace SresgaminG.Arma
             Process.Start("http://www.twitch.tv/sresgaming");
         }
 
+        private void OnDonateClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://twitch.streamlabs.com/sresgaming#/");
+        }
+
         private void OnClickSave(object sender, EventArgs e)
         {
             CreateXML(Binding.ToString());
@@ -248,12 +296,12 @@ namespace SresgaminG.Arma
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "ArmamutE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "GamemutE", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return false;
             }
 
-            MessageBox.Show(string.Format("Key binding {0} has been saved", GetBindingText(binding)), "ArmamutE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(string.Format("Key binding {0} has been saved", GetBindingText(binding)), "GamemutE", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             return true;
         }

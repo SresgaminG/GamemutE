@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="Arma - Mute" Language="1033" Version="1.7.0.0" Manufacturer="SresgaminG" UpgradeCode="7b08f0cf-503e-46c7-8d96-a5ab635b96ed">
+	<Product Id="*" Name="GamemutE" Language="1033" Version="2.0.0.0" Manufacturer="SresgaminG" UpgradeCode="7b08f0cf-503e-46c7-8d96-a5ab635b96ed">
     
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perUser" />
-    <MajorUpgrade DowngradeErrorMessage="A newer version of ArmamutE is already installed." />
+    <MajorUpgrade DowngradeErrorMessage="A newer version of GamemutE is already installed." />
 
-    <Media Id='1' Cabinet='ArmamutE.cab' EmbedCab='yes' CompressionLevel='high'/>
+    <Media Id='1' Cabinet='GamemutE.cab' EmbedCab='yes' CompressionLevel='high'/>
 
-		<Feature Id="AllFeatures" Title="ArmamutE" Description="ArmamutE Installer" Display="expand" Level="1">
+		<Feature Id="AllFeatures" Title="GamemutE" Description="GamemutE Installer" Display="expand" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
       <ComponentRef Id='SresgaminGMenuDir' />
 		</Feature>
 
     <!-- Setup Icon in the Add/Remove programs  -->
-    <Property Id='ARPPRODUCTICON'>ArmamutE.exe.ico</Property>
-    <Icon Id="ArmamutE.exe.ico" SourceFile="$(var.ArmamutE.TargetPath)" />
+    <Property Id='ARPPRODUCTICON'>GamemutE.exe.ico</Property>
+    <Icon Id="GamemutE.exe.ico" SourceFile="$(var.GamemutE.TargetPath)" />
 
     
     
@@ -25,7 +25,7 @@
       
       <Directory Id="LocalAppDataFolder">
         <Directory Id="SresgaminGFolder" Name="SresgaminG">
-          <Directory Id="INSTALLFOLDER" Name="ArmamutE"/>
+          <Directory Id="INSTALLFOLDER" Name="GamemutE"/>
         </Directory>
       </Directory>
 

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SresgaminG.Arma.Properties {
+namespace SresgaminG.GamemutE.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace SresgaminG.Arma.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SresgaminG.Arma.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SresgaminG.GamemutE.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,19 +63,9 @@ namespace SresgaminG.Arma.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ArmamutE {
+        internal static System.Drawing.Bitmap GamemutE {
             get {
-                object obj = ResourceManager.GetObject("ArmamutE", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap sg_initial {
-            get {
-                object obj = ResourceManager.GetObject("sg-initial", resourceCulture);
+                object obj = ResourceManager.GetObject("GamemutE", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
 
-namespace SresgaminG.Arma
+namespace SresgaminG.GamemutE
 {
     public class SingleInstanceHelper
     {

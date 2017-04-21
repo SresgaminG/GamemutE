@@ -3,19 +3,19 @@
 	<Fragment>
     <ComponentGroup Id="SresgaminGFiles">
       
-      <Component Id="ArmamutEMainProgram" Guid="{808A3718-F67E-4854-93E4-DEE5543C12AA}" Directory="INSTALLFOLDER">
+      <Component Id="GamemutEMainProgram" Guid="{808A3718-F67E-4854-93E4-DEE5543C12AA}" Directory="INSTALLFOLDER">
 
-        <RemoveFolder Id="ArmamutEMainProgram" On="uninstall" Directory="INSTALLFOLDER"/>
+        <RemoveFolder Id="GamemutEMainProgram" On="uninstall" Directory="INSTALLFOLDER"/>
 
-        <File Id="SresgaminG.ArmamutE" Name="ArmamutE.exe" DiskId="1" Source="$(var.ArmamutE.TargetPath)" KeyPath="yes"/>
-        <File Id="SresgaminG.ArmamutE.config" Name ="ArmamutE.exe.config"  DiskId="1" Source="$(var.ArmamutE.TargetPath).config"/>
+        <File Id="SresgaminG.GamemutE" Name="GamemutE.exe" DiskId="1" Source="$(var.GamemutE.TargetPath)" KeyPath="yes"/>
+        <File Id="SresgaminG.GamemutE.config" Name ="GamemutE.exe.config"  DiskId="1" Source="$(var.GamemutE.TargetPath).config"/>
         
         <File Id="Gma.System.MouseKeyHook" Name="Gma.System.MouseKeyHook.dll" DiskId="1" Source="$(var.SolutionDir)ArmamutE\dlls\Gma.System.MouseKeyHook.dll"/>
         <File Id="CoreAudio" Name="CoreAudio.dll" DiskId="1" Source="$(var.SolutionDir)ArmamutE\dlls\CoreAudio.dll"/>
         <File Id="NLog" Name="NLog.dll" DiskId="1" Source="$(var.SolutionDir)ArmamutE\dlls\NLog.dll"/>
 
-        <Shortcut Id="startMenuArmamutEShortcut" Directory="SresgaminGMenuDir" Icon ="ArmamutE.exe.ico" Name="ArmamutE" WorkingDirectory="INSTALLFOLDER" IconIndex="0" Advertise="yes" />
-        <Shortcut Id="desktopArmamutEShortcut" Directory="DesktopFolder" Name="ArmamutE" WorkingDirectory="INSTALLFOLDER" Icon="ArmamutE.exe.ico" IconIndex="0" Advertise="yes" />
+        <Shortcut Id="startMenuGamemutEShortcut" Directory="SresgaminGMenuDir" Icon ="GamemutE.exe.ico" Name="GamemutE" WorkingDirectory="INSTALLFOLDER" IconIndex="0" Advertise="yes" />
+        <Shortcut Id="desktopGamemutEShortcut" Directory="DesktopFolder" Name="GamemutE" WorkingDirectory="INSTALLFOLDER" Icon="GamemutE.exe.ico" IconIndex="0" Advertise="yes" />
       </Component>
       
     </ComponentGroup>
