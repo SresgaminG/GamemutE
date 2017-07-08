@@ -71,9 +71,9 @@ namespace SresgaminG.GamemutE
             }
         }
 
-        public static List<string> GetListOfApplicationsWithAudio()
+        public static List<uint> GetListOfApplicationsWithAudio()
         {
-            List<string> results = new List<string>();
+            List<uint> results = new List<uint>();
 
             EDataFlow flow = new EDataFlow();
             MMDeviceEnumerator deviceEnum = new MMDeviceEnumerator();
@@ -83,7 +83,7 @@ namespace SresgaminG.GamemutE
             for (int devIdx = 0; devIdx < devCol.Count; devIdx++)
             {
                 for (int sesIdx = 0; sesIdx < devCol[devIdx].AudioSessionManager2.Sessions.Count; sesIdx++)
-                    results.Add(devCol[devIdx].AudioSessionManager2.Sessions[sesIdx].GetSessionIdentifier);
+                    results.Add(devCol[devIdx].AudioSessionManager2.Sessions[sesIdx].GetProcessID);
             }
 
             return results;

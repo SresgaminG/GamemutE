@@ -7,11 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GamemutE", "ArmaMute\Gamemu
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "GamemutE.Installer", "ArmamutE.Installer\GamemutE.Installer.wixproj", "{2FE873A0-34C7-4841-BD95-2A46D725DEF1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{15D3423C-5769-4FC3-94B5-E121FA0741E6}"
-	ProjectSection(SolutionItems) = preProject
-		gamelist.xml = gamelist.xml
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -5,6 +5,8 @@
         public string Name { get; set; }
         public string ExeName { get; set; }
 
+        public bool IsActive { get; set; }
+
         public Game() { }
         public Game(string name, string exeName)
         {

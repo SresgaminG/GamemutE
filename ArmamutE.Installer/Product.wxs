@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="GamemutE" Language="1033" Version="2.0.0.0" Manufacturer="SresgaminG" UpgradeCode="7b08f0cf-503e-46c7-8d96-a5ab635b96ed">
+	<Product Id="*" Name="GamemutE" Language="1033" Version="2.1.0.0" Manufacturer="SresgaminG" UpgradeCode="7b08f0cf-503e-46c7-8d96-a5ab635b96ed">
     
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perUser" />
     <MajorUpgrade DowngradeErrorMessage="A newer version of GamemutE is already installed." />
@@ -14,10 +14,7 @@
 
     <!-- Setup Icon in the Add/Remove programs  -->
     <Property Id='ARPPRODUCTICON'>GamemutE.exe.ico</Property>
-    <Icon Id="GamemutE.exe.ico" SourceFile="$(var.GamemutE.TargetPath)" />
-
-    
-    
+    <Icon Id="GamemutE.exe.ico" SourceFile="$(var.GamemutE.TargetPath)" />    
 	</Product>
 
 	<Fragment>
