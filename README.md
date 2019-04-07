@@ -1,4 +1,4 @@
 # GamemutE
-A system tray application for streamers and anyone who wants to mute the lobby of either Arma 3 : Battleroyale, or the new PlayerUnknown Battlegrounds.
+A system tray application for streamers and anyone who wants to mute game sounds. works with most games.
 
-Previously ArmamutE
+Previously called ArmamutE
